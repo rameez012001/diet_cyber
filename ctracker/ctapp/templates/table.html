@@ -1,0 +1,46 @@
+<section>
+
+    <form method="get" class="form">
+        {% csrf_token %}
+        <input type="text" placeholder="Add Food items" name="food">
+        <button>Add</button>
+    </form>
+
+    <div class="table">
+        <table>
+            <tr>
+                <th>Food</th>
+                <th>Calories</th>
+                <th>Protein</th>
+                <th>Fat</th>
+                <th><a href="deleteall/">Delete all</a></th>
+            </tr>
+            {% for x in fdata %}
+            <tr>
+                <td>{{x.food}}</td>
+                <td>{{x.calories}}</td>
+                <td>{{x.protein}}</td>
+                <td>{{x.fat}}</td>
+                <td><a href="delete/{{ x.id }}">Remove</a></td>
+                <!-- <td><a href="#">remove</a></td> -->
+                
+            </tr>
+            {% endfor %}
+            <tr style="background-color: rgb(78, 78, 78); color:aliceblue">
+                <td>Total</td>
+                <td id="caltot">{{cal}}</td>
+                <td id="calpro">{{pro}}</td>
+                <td id="calfat">{{fat}}</td>
+            </tr>
+        </table>
+    </div>
+    <!-- progress bar -->
+    <div id="progress1">
+        
+
+        <div id="progress2">
+            <span id="num"></span>
+        </div>
+    </div>
+
+</section>

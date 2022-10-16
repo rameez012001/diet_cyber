@@ -1,0 +1,67 @@
+# def chart(xx):
+#   df=pd.read_csv(r'ctapp\csv\bmi1.csv')
+#   df1=pd.read_csv(r'ctapp\csv\wcal.csv')
+#   hindex=df.set_index('height')#height index
+#   windex=df1.set_index('weight')#weight index in wcal.csv
+#   x1=hindex.loc[xx,'weight']
+#   x2=hindex.loc[xx,'ntw1']
+#   x3=int(x2)
+#   lbs1=x3*2.204623
+#   lbs2=lbs1/10
+#   lbs3=m.ceil(lbs2)
+#   #it get the weight with respect to "fti" height in bmi charts
+#   yy=lbs3*10
+#   y1=windex.loc[yy,'netcalories']
+#   result = "you should be weigh between ",x1," you will need ",y1," calories to be fit"
+#   print(x1)
+#   print(x2)
+#   return result
+
+
+
+
+data=fdata.objects.filter(food=y()).values()
+
+
+
+
+
+
+
+javascript
+
+function feedback(color,result,x,y){
+    document.getElementById('result').style.color=color;
+    document.getElementById('result').innerHTML=result;
+    document.getElementById('feedback').innerHTML=x;
+    document.getElementById('feedback').style.color=color;  
+    let z = 21.7*y;
+    document.getElementById('result1').innerHTML=z.toFixed(1);    
+}
+
+function bmi(){
+    let height = document.getElementById('height');
+    let weight = document.getElementById('weight');
+    let metre = height.value/100; //centimetre to metre conversion
+    // bmi calculations
+    let m2 = metre*metre;//bmi formula "weight/metre(2)"
+    let bmi = weight.value/m2;
+    let rbmi = bmi.toFixed(1);
+    if(height.value==""||weight.value==""){
+        feedback('black',"NaN",'Invalid')
+    }
+    else{
+        if(rbmi<18.5){
+            feedback('orange',rbmi,'Underweight',m2)
+        }else if(rbmi>=18.5&&rbmi<=24.9){
+            feedback('green',rbmi,'Normal',m2)
+            
+        }else if(rbmi>=25&&rbmi<=29.9){
+            feedback('red',rbmi,'Overweight',m2)
+        }else if(bmi>30){
+            feedback('darkred',rbmi,'Obese',m2)
+        }else{
+            feedback('black',"NaN",'Invalid',m2)
+        }
+    }
+}
