@@ -22,11 +22,15 @@ def index(request):
   
   if request.GET.get('food'):
     q= request.GET['food']
+    qty=request.GET['Qty]
     x1=findex.loc[q,'Calories']
+    X11=int(qty)*float(x1)
     x2=findex.loc[q,'Protein']
+    X22=int(qty)*float(x2)
     x3=findex.loc[q,'Fat']
+    X33=int(qty)*float(x3)
 
-    a = fdata(food=q,calories=x1,protein=x2,fat=x3)
+    a = fdata(food=q,Quantity=qty,calories=x11,protein=x22,fat=x33)
     a.save()
   else:
       False 
